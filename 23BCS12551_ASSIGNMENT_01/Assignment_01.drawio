@@ -1,0 +1,96 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.7">
+  <diagram name="Enterprise Payment Processing HLD (Spaced + Icons)" id="0">
+    <mxGraphModel dx="1895" dy="1022" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" style="rounded=1;" value="Users" vertex="1">
+          <mxGeometry height="60" width="140" x="40" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="3" parent="1" style="rounded=1;" value="Merchants" vertex="1">
+          <mxGeometry height="60" width="140" x="40" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="4" parent="1" style="shape=mxgraph.aws4.apigateway;whiteSpace=wrap;verticalAlign=bottom;" value="API Gateway" vertex="1">
+          <mxGeometry height="110" width="120" x="260" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="5" parent="1" style="shape=mxgraph.aws4.elastic_load_balancing;whiteSpace=wrap;fillColor=#1ba1e2;fontColor=light-dark(#FFFFFF,#FFFFFF);strokeColor=#006EAF;" value="Load Balancer" vertex="1">
+          <mxGeometry height="120" width="140" x="460" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="6" parent="1" style="rounded=1;" value="Payment Controller (REST API)" vertex="1">
+          <mxGeometry height="60" width="260" x="680" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="7" parent="1" style="rounded=1;" value="Payment Intent Service" vertex="1">
+          <mxGeometry height="60" width="260" x="840" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="8" parent="1" style="rounded=1;" value="Payment Session Service" vertex="1">
+          <mxGeometry height="60" width="260" x="830" y="524.5" as="geometry" />
+        </mxCell>
+        <mxCell id="9" parent="1" style="rounded=1;" value="Payment Processor Service" vertex="1">
+          <mxGeometry height="60" width="260" x="830" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="10" parent="1" style="rounded=1;dashed=1;" value="&lt;&lt;Interface&gt;&gt;&#xa;PaymentService" vertex="1">
+          <mxGeometry height="80" width="260" x="1170" y="358" as="geometry" />
+        </mxCell>
+        <mxCell id="11" parent="1" style="rounded=1;dashed=1;" value="&lt;&lt;Interface&gt;&gt;&#xa;TransactionRepository" vertex="1">
+          <mxGeometry height="80" width="260" x="1170" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="12" parent="1" style="shape=mxgraph.aws4.database;whiteSpace=wrap;fillColor=#1ba1e2;fontColor=light-dark(#FFFFFF,#FFFFFF);strokeColor=#006EAF;" value="Payment Database" vertex="1">
+          <mxGeometry height="120" width="140" x="1480" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="13" parent="1" style="rounded=1;dashed=1;" value="&lt;&lt;Interface&gt;&gt;&#xa;GatewayClient" vertex="1">
+          <mxGeometry height="80" width="260" x="1200" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="14" parent="1" style="shape=mxgraph.aws4.generic;whiteSpace=wrap;fillColor=#1ba1e2;fontColor=light-dark(#FFFFFF,#FFFFFF);strokeColor=#006EAF;" value="External Payment Processor" vertex="1">
+          <mxGeometry height="100" width="160" x="1250" y="485" as="geometry" />
+        </mxCell>
+        <mxCell id="15" edge="1" parent="1" source="2" style="endArrow=block;" target="4" value="Requests">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="16" edge="1" parent="1" source="3" style="endArrow=block;" target="4" value="Requests">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="17" edge="1" parent="1" source="4" style="endArrow=block;" target="5" value="Route">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="18" edge="1" parent="1" source="5" style="endArrow=block;" target="6" value="Forward">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="19" edge="1" parent="1" source="6" style="endArrow=block;" target="7" value="Create / Fetch Intent">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="810" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="20" edge="1" parent="1" source="6" style="endArrow=block;" target="8" value="Create Session">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="810" y="540" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="21" edge="1" parent="1" source="8" style="endArrow=block;" target="9" value="Process Payment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="22" edge="1" parent="1" source="7" style="dashed=1;endArrow=open;" target="10" value="Implements">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="23" edge="1" parent="1" source="7" style="endArrow=block;" target="11" value="Uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="24" edge="1" parent="1" source="11" style="endArrow=block;" target="12" value="Persist">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="25" edge="1" parent="1" source="9" style="endArrow=block;" target="13" value="Uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="26" edge="1" parent="1" source="13" style="endArrow=block;" target="14" value="Call">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-6R8Z6Ns_82CgBESAAtQ-28" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;" value="" vertex="1">
+          <mxGeometry height="78" width="78" x="281" y="360" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
